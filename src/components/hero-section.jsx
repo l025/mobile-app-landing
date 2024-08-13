@@ -11,9 +11,9 @@ import { FEATURES } from "../features"
 export default function HeroSection() {
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
-  ScrollTrigger.config({
-    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load, resize",
-  })
+  //   ScrollTrigger.config({
+  //     autoRefreshEvents: "visibilitychange,DOMContentLoaded,load, resize",
+  //   })
 
   useLayoutEffect(() => {
     gsap.to("#sec-hero", {
@@ -28,7 +28,6 @@ export default function HeroSection() {
       borderRadius: "100px",
       ease: "power4.out",
     })
-
     gsap.to("#mobile-container", {
       scrollTrigger: {
         trigger: "#sec-features",
@@ -53,30 +52,6 @@ export default function HeroSection() {
       yoyo: 1,
       repeat: 1,
     })
-
-    // Screens
-    // setTimeout(() => {
-    //   const screens = document.querySelectorAll(".screen")
-    //   screens.forEach((s, i) => {
-    //     console.log(-1 * s.clientHeight * i)
-    //     gsap.to(".screen-wrapper", {
-    //       scrollTrigger: {
-    //         trigger: s,
-    //         start: "top center",
-    //         end: "bottom center",
-    //         scrub: 1,
-    //         snap: {
-    //           snapTo: "labels", // snap to the closest label in the timeline
-    //           duration: { min: 0.2, max: 3 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-    //           delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
-    //           ease: "power1.in", // the ease of the snap animation ("power3" by default)
-    //         },
-    //       },
-    //       y: -1 * s.clientHeight * i,
-    //       ease: "power1.in",
-    //     })
-    //   })
-    // }, 1000)
   }, [])
 
   function handleMobileClick() {
