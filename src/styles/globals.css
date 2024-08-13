@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: 198deg 93% 60%;
+  --color-secondary: 198deg 93% 60%;
+  --color-neutral: 198deg 93% 60%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
+}
+
+@layer utilities {
+}
+html {
+}
+
+body {
+  @apply relative bg-[#242629];
+}
+.btn {
+  @apply rounded-full bg-[#447CF5] px-7 py-3 text-white hover:shadow-md;
+}
+.screen {
+  @apply sticky top-0 h-screen w-full;
+}
+#mobile-wrapper {
+  @apply absolute right-6 top-[15dvh] w-[342px];
+}
+.screen-wrapper {
+  @apply absolute right-6 top-[15dvh] flex w-[342px] cursor-pointer flex-col overflow-hidden rounded-[4rem] p-2;
+}
+.screen img {
+  @apply w-full;
+}
+#nav-features a {
+  @apply px-4 py-0.5 opacity-40 hover:opacity-65;
+}
+
+#nav-features a.active {
+  @apply opacity-100;
+}
+
+#features-wrapper {
+  @apply relative w-full;
+}
+.feature-wrapper {
+  @apply sticky top-0 h-screen w-full flex-1;
+}
+.feature-content {
+  @apply flex h-screen flex-col gap-4 pt-[20dvh];
+}
+.feature-content h2 {
+  @apply max-w-[20ch] text-[3rem] font-medium leading-snug;
+}
+.feature-content p {
+  @apply max-w-[55ch] text-lg leading-relaxed opacity-70;
+}
