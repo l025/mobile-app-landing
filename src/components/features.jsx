@@ -1,19 +1,20 @@
 import gsap from "gsap"
 import { useEffect } from "react"
-import { ScrollToPlugin } from "gsap/ScrollToPlugin"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { FEATURES } from "../features"
+import { ScrollToPlugin } from "gsap/ScrollToPlugin"
+import data from "@/../data/app.json"
 import { AnimateBtn } from "./animate-btn"
 import useSize from "../hooks/useSize"
 
 export default function Features() {
-  gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
-  const windowSize = useSize()
+  const FEATURES = data.features
 
   useEffect(() => {
     const links = gsap.utils.toArray("#nav-features a")
     const features = gsap.utils.toArray(".feature-content")
+
     features.forEach((s, i) => {
       //nav
       const link = links[i]
@@ -27,19 +28,7 @@ export default function Features() {
         onLeaveBack: () => link.classList.remove("active"),
       })
 
-      // animate
-      // gsap.set(s, { x: -20, opacity: 0 })
-      // gsap.to(s, {
-      //   scrollTrigger: {
-      //     trigger: s,
-      //     scrub: 1,
-      //     start: "top 90%",
-      //     end: "top 20%",
-      //     markers: 1,
-      //   },
-      //   x: 0,
-      //   opacity: 1,
-      // })
+      // content
       gsap.to(s, {
         scrollTrigger: {
           trigger: s,
@@ -54,11 +43,16 @@ export default function Features() {
   }, [])
 
   function handleFeatureClick(key, i) {
-    gsap.to(window, {
-      duration: 1,
-      scrollTo: windowSize.height * (i + 1) + 200,
-      ease: "power1.out",
-    })
+    // const windowSize = window.innerHeight
+    // const targetPosition = windowSize * (i + 1) + 200
+    // const currentPosition = window.scrollY
+    // const scrollGap = Math.abs(targetPosition - currentPosition)
+    // const duration = scrollGap / (windowSize * FEATURES.length - 2)
+    // gsap.to(window, {
+    //   duration: duration,
+    //   scrollTo: targetPosition,
+    //   ease: "power1.out",
+    // })
   }
 
   return (
@@ -67,15 +61,15 @@ export default function Features() {
         id="sec-features"
         className="relative z-20 bg-[#242629] py-[20dvh] text-white"
       >
-        <div className="container relative z-10 flex">
+        <div className="container relative z-10 flex flex-col px-4 lg:flex-row">
           <div className="relative min-h-full">
             <nav
               id="nav-features"
-              className="sticky left-5 top-0 z-10 flex w-[230px] flex-col gap-4 pt-[20dvh]"
+              className="sticky top-0 z-10 hidden flex-row flex-wrap gap-2 pt-8 md:flex lg:left-5 lg:w-[230px] lg:flex-col lg:gap-4 lg:pt-[20dvh]"
             >
               {FEATURES.map((f, i) => (
                 <a
-                  key={f.key}
+                  key={`feature-nav-${f.key}`}
                   id={`feature-nav-${f.key}`}
                   href={`#${f.key}`}
                   onClick={() => handleFeatureClick(f.key, i)}
@@ -85,12 +79,13 @@ export default function Features() {
               ))}
             </nav>
           </div>
-          <div id="features-wrapper">
+          <div id="features-wrapper" className="relative w-full">
             {FEATURES.map((f) => (
               <section
-                key={f.key}
+                key={`feature-${f.key}`}
                 id={`feature-${f.key}`}
                 className="feature-wrapper"
+                data-screen={`screen-${f.key}`}
               >
                 <div className="feature-content">
                   <h2>{f.title}</h2>

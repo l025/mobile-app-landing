@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Header />
 
-      <main className="max-w-screen pb-[100dvh]">
+      <main className="max-w-screen">
         <HeroSection />
         <Features />
       </main>

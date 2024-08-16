@@ -24,38 +24,32 @@ body {
 .btn {
   @apply rounded-full bg-[#447CF5] px-7 py-3 text-white hover:shadow-md;
 }
-.screen {
-  @apply sticky top-0 h-screen w-full;
-}
-#mobile-wrapper {
-  @apply absolute right-6 top-[15dvh] w-[342px];
+
+.mobile-frame {
+  @apply absolute bottom-10 left-1/2 h-[304px] w-[150px] -translate-x-1/2 transform lg:bottom-full lg:left-auto lg:right-2 lg:top-1/2 lg:h-[728px] lg:w-[360px] lg:-translate-y-1/2 lg:translate-x-0 rtl:lg:left-2 rtl:lg:right-auto;
 }
 .screen-wrapper {
-  @apply absolute right-6 top-[15dvh] flex w-[342px] cursor-pointer flex-col overflow-hidden rounded-[4rem] p-2;
+  /* @apply absolute right-6 top-[15dvh] flex w-[342px] cursor-pointer flex-col overflow-hidden rounded-[4rem] p-2; */
+  @apply absolute translate-y-full shadow-xl;
 }
-.screen img {
-  @apply w-full;
-}
+
 #nav-features a {
-  @apply px-4 py-0.5 opacity-40 hover:opacity-65;
+  @apply text-nowrap py-0.5 opacity-40 hover:opacity-65;
 }
 
 #nav-features a.active {
   @apply opacity-100;
 }
 
-#features-wrapper {
-  @apply relative w-full;
-}
 .feature-wrapper {
   @apply sticky top-0 h-screen w-full flex-1;
 }
 .feature-content {
-  @apply flex h-screen flex-col gap-4 pt-[20dvh];
+  @apply flex h-screen flex-col gap-4 pt-[10dvh] lg:pt-[20dvh];
 }
 .feature-content h2 {
-  @apply max-w-[20ch] text-[3rem] font-medium leading-snug;
+  @apply text-3xl font-medium leading-snug lg:max-w-[20ch] lg:text-[3rem];
 }
 .feature-content p {
-  @apply max-w-[55ch] text-lg leading-relaxed opacity-60;
+  @apply leading-relaxed opacity-60 lg:max-w-[55ch] lg:text-lg;
 }

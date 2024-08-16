@@ -1,5 +1,52 @@
 {
   "style": {
-    "background": "#333"
-  }
+    "color-primary": "",
+    "color-secondary": "",
+    "color-neutral": "",
+    "dir": "ltr"
+  },
+  "app": {
+    "lang": "en",
+    "title": "Landing Sample",
+    "desc": "Landing SampleLanding SampleLanding SampleLanding Sample",
+    "logoUrl": "/app-landing/assets/logo.png",
+    "favicon": "/app-landing/assets/favicon.ico",
+    "iphoneModelUrl": "/app-landing/assets/iphone.png",
+    "iphoneCameraUrl": "/app-landing/assets/iphone-camera.png"
+  },
+  "hero": {
+    "key": "hero",
+    "name": "hero",
+    "screen": "/app-landing/assets/s1.png",
+    "title": "Lorem ipsum dolor",
+    "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint voluptates ipsam recusandae perspiciatis tempore animi similique, eum maiores mollitia eius omnis eveniet quae, culpa atque, illo magni temporibus enim."
+  },
+  "footer": {
+    "key": "footer",
+    "name": "footer",
+    "screen": "/app-landing/assets/s5.png"
+  },
+  "features": [
+    {
+      "key": "Feature02",
+      "name": "Feature 02",
+      "title": "Feature 02 Feature 02 Feature 02",
+      "desc": "Feature 02 Feature 02 Feature 02 Feature 02 Feature 02 Feature 02 v Feature 02 Feature 02 Feature 02",
+      "screen": "/app-landing/assets/s2.png"
+    },
+    {
+      "key": "Feature03",
+      "name": "Feature 03",
+      "title": "Feature 03 Feature 03 Feature 03",
+      "desc": "Feature 03 Feature 03 Feature 03 Feature 03 Feature 03 Feature 03 v Feature 03 Feature 03 Feature 03",
+      "screen": "/app-landing/assets/s3.png"
+    },
+    {
+      "key": "Feature04",
+      "name": "Feature 04",
+      "title": "Feature 04 Feature 04 Feature 04",
+      "desc": "Feature 04 Feature 04 Feature 04 Feature 04 Feature 04 Feature 04 v Feature 04 Feature 04 Feature 04",
+      "screen": "/app-landing/assets/s4.png"
+    }
+  ]
 }

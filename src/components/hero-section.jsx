@@ -1,19 +1,14 @@
+"use client"
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload"
-import ManageSearchIcon from "@mui/icons-material/ManageSearch"
 import StarIcon from "@mui/icons-material/Star"
 import LineWeightIcon from "@mui/icons-material/LineWeight"
 import gsap from "gsap"
-import { useEffect, useLayoutEffect } from "react"
-import { ScrollToPlugin } from "gsap/ScrollToPlugin"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { FEATURES } from "../features"
+import { useLayoutEffect } from "react"
+import Mobile2D from "./mobile2d"
+// import useScreenType from "react-screentype-hook"
 
 export default function HeroSection() {
-  gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
-
-  //   ScrollTrigger.config({
-  //     autoRefreshEvents: "visibilitychange,DOMContentLoaded,load, resize",
-  //   })
+  // const screenType = useScreenType()
 
   useLayoutEffect(() => {
     gsap.to("#sec-hero", {
@@ -25,53 +20,25 @@ export default function HeroSection() {
       },
       scaleX: 0.95,
       y: 150,
-      borderRadius: "100px",
+      // borderRadius: screenType.isMobile ? "50px" : "100px",
+      borderRadius: "50px",
       ease: "power4.out",
-    })
-    gsap.to("#mobile-container", {
-      scrollTrigger: {
-        trigger: "#sec-features",
-        start: "top 70%",
-        end: "top top",
-        scrub: 1,
-      },
-      y: "20dvh",
-      ease: "power1.out",
-      yoyo: 1,
-      repeat: 1,
-    })
-    gsap.to("#mobile-container", {
-      scrollTrigger: {
-        trigger: "footer",
-        start: "top 80%",
-        end: "top 10%",
-        scrub: 1,
-      },
-      y: "10dvh",
-      ease: "power1",
-      yoyo: 1,
-      repeat: 1,
     })
   }, [])
 
-  function handleMobileClick() {
-    gsap.to(window, {
-      duration: 2,
-      scrollTo: "#features-wrapper",
-      autoKill: true,
-      ease: "power2",
-    })
-  }
-
   return (
     <>
-      <section id="sec-hero" className="relative z-30 bg-[#F4F5F9]">
-        <div className="container relative flex min-h-screen flex-1 flex-col justify-center gap-20 pl-8 pr-[400px] pt-24">
-          <div className="mb-16 flex max-w-[50dvw] flex-col gap-4">
-            <h1 className="slide-up text-[3rem] font-semibold text-neutral-900">
+      <section
+        id="sec-hero"
+        data-screen={`screen-header`}
+        className="relative z-30 bg-[#F4F5F9]"
+      >
+        <div className="container relative flex min-h-screen flex-1 flex-col justify-start gap-4 px-4 pb-6 pt-24 lg:justify-center lg:gap-20 lg:pl-8 lg:pr-[400px] rtl:lg:pl-[400px] rtl:lg:pr-8">
+          <div className="flex flex-col gap-4 lg:mb-16 lg:max-w-[50dvw]">
+            <h1 className="slide-up text-[2rem] font-semibold text-neutral-900 lg:text-[3rem]">
               Lorem ipsum dolor
             </h1>
-            <p className="slide-up text-lg font-light text-neutral-500">
+            <p className="slide-up text-base font-light text-neutral-500 lg:text-lg">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint
               voluptates ipsam recusandae perspiciatis tempore animi similique,
               eum maiores mollitia eius omnis eveniet quae, culpa atque, illo
@@ -79,19 +46,19 @@ export default function HeroSection() {
             </p>
           </div>
 
-          <div className="slide-up flex items-center justify-center self-start rounded-xl border border-dashed border-gray-400 text-sm opacity-60">
-            <div className="flex min-w-36 flex-1 flex-col items-center justify-center px-8 py-3">
+          <div className="slide-up flex scale-75 items-center justify-center self-start rounded-xl border border-dashed border-gray-400 text-sm opacity-60 lg:scale-100">
+            <div className="flex min-w-28 flex-1 flex-col items-center justify-center px-5 py-3 lg:min-w-36 lg:px-8">
               <CloudDownloadIcon fontSize="large" className="mb-0.5" />
               <strong>1M+</strong>
               <span>Downloads</span>
             </div>
-            <div className="flex min-w-36 flex-1 flex-col items-center justify-center border-l border-dashed border-gray-400 px-8 py-3">
+            <div className="flex min-w-28 flex-1 flex-col items-center justify-center border-dashed border-gray-400 px-5 py-3 lg:min-w-36 lg:px-8 ltr:border-l rtl:border-r">
               <StarIcon fontSize="large" className="mb-0.5" />
               <strong>4.7 *</strong>
               <span className="text-nowrap">3K reviews</span>
             </div>
 
-            <div className="flex min-w-36 flex-1 flex-col items-center justify-center border-l border-dashed border-gray-400 px-8 py-3">
+            <div className="flex min-w-28 flex-1 flex-col items-center justify-center border-dashed border-gray-400 px-5 py-3 lg:min-w-36 lg:px-8 ltr:border-l rtl:border-r">
               <LineWeightIcon fontSize="large" className="mb-0.5" />
               <strong>6.4 MB</strong>
               <span>Size</span>
@@ -109,39 +76,7 @@ export default function HeroSection() {
         </div>
       </section>
 
-      <section
-        id="mobile-container"
-        className="pointer-events-none absolute bottom-0 left-0 right-0 top-0 z-30"
-      >
-        <div className="container relative mx-auto min-h-screen">
-          <div className="screen -mb-[100dvh]">
-            <div id="mobile-wrapper" onClick={handleMobileClick}>
-              <img src="/assets/iphone.png" alt="" className="max-h-[75dvh]" />
-            </div>
-          </div>
-          <div className="relative">
-            <div className="screen">
-              <div className="screen-wrapper">
-                <img src="/assets/s1.png" alt="" />
-              </div>
-            </div>
-            {FEATURES.map((f) => (
-              <div key={f.key} className="screen">
-                <div className="screen-wrapper">
-                  <img src={f.screen} />
-                </div>
-              </div>
-            ))}
-            <div className="h-[20dvh]"></div>
-            <div className="screen">
-              <div className="screen-wrapper">
-                <img src="/assets/s1.png" alt="" />
-              </div>
-            </div>
-            <div className="h-[40dvh]"></div>
-          </div>
-        </div>
-      </section>
+      <Mobile2D screenIndex={1} />
     </>
   )
 }
